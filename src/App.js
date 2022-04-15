@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import MainHeader from "./components/MainHeader";
 import ProductDetail from "./Routes/ProductDeatil";
 import Product from "./Routes/Products";
@@ -9,22 +9,23 @@ function App() {
     <div>
       <MainHeader />
       <main>
-        <Route path="/welcome">
-          <Welcome />
-        </Route>
-        <Route path="/products">
-          <Product />
-        </Route>
-        <Route path='/product-detail/:productId'>
-          <ProductDetail />
-        </Route>
+        <Switch>
+          <Route path="/welcome">
+            <Welcome />
+          </Route>
+          <Route path="/products" exact>
+            <Product />
+          </Route>
+          <Route path="/products/:productId">
+            <ProductDetail />
+          </Route>
+        </Switch>
       </main>
     </div>
   );
 }
 
 export default App;
-
 
 // our-domain.com/welcome => Welcome Component
 // our-domain.com/products => Products Component
